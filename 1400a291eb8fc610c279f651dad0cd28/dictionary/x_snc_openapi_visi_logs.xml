@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="timeFromCreateToActivate=56341525000" db_object_id="d740ea99eb8fc610c279f651dad0cdca" label="Logs" max_length="40" name="x_snc_openapi_visi_logs" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Logs" max_length="40" name="logs" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+    </element>
+</database>

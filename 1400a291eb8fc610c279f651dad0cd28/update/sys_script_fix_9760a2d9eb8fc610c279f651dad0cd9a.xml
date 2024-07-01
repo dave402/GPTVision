@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>Test</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[(function() {
+    // Get the case record
+    var caseGR = new GlideRecord('sn_customerservice_case');
+    caseGR.get('sys_id', '83c9888747750550da447508946d435d');
+
+    if (!caseGR.isValidRecord()) {
+        gs.error('Case record not found');
+        return;
+    }
+
+    // Get the attachment
+    var attachment = new GlideSysAttachment();
+    var attachmentGR = attachment.getAttachments('sn_customerservice_case', caseGR.sys_id);
+
+    if (!attachmentGR.next()) {
+        gs.error('No attachment found for the case');
+        return;
+    }
+
+    // Get the base64 encoded content directly
+    var base64EncodedImage = attachment.getContentBase64(attachmentGR);
+
+    // Output the base64 encoded string (you might want to limit this for large files)
+    gs.info('File name: ' + attachmentGR.getValue('file_name'));
+    gs.info('Base64 encoded image: ' + base64EncodedImage);
+
+    // Alternatively, you can store it in a variable or do further processing
+    // var encodedImageVar = base64EncodedImage;
+})();]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-06-26 16:29:52</sys_created_on>
+        <sys_id>9760a2d9eb8fc610c279f651dad0cd9a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Test</sys_name>
+        <sys_package display_value="OpenAPI Vision" source="x_snc_openapi_visi">1400a291eb8fc610c279f651dad0cd28</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="OpenAPI Vision">1400a291eb8fc610c279f651dad0cd28</sys_scope>
+        <sys_update_name>sys_script_fix_9760a2d9eb8fc610c279f651dad0cd9a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-06-26 16:29:52</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>
